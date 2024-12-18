@@ -34,11 +34,10 @@ const userSchema = new Schema<IUser>({
     default: 'user',
     required: true,
   },
-  userStatus: {
-    type: String,
-    enum: ['active', 'inactive'],
+  isBlocked: {
+    type: Boolean,
     required: true,
-    default: 'active',
+    default: true,
   },
 });
 
