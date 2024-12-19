@@ -20,15 +20,12 @@ const deleteBlog = async (id: string) => {
 };
 
 const getAllBlogs = async (query: Record<string, unknown>) => {
-  // const searchableFields = ['name', 'startLocation', 'locations'];
   // const searchableFields = ['title', 'content', 'author'];
   const searchableFields = ['title', 'content'];
   const tours = new QueryBuilder(Blog.find(), query)
     .search(searchableFields)
     .filter()
-    .sort()
-    .paginate();
-  // .select();
+    .sortBy();
 
   const result = await tours.modelQuery;
   return result;

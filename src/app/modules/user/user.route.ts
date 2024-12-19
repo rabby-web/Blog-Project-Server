@@ -14,4 +14,7 @@ userRoutes.post(
 // PATCH /api/admin/users/:userId/block
 userRoutes.patch('/admin/users/:userId', userController.updateUser);
 
+// /api/admin/blogs/:id
+userRoutes.delete('/admin/blogs/:id', userController.deleteBlogToDB);
+
 export default userRoutes;

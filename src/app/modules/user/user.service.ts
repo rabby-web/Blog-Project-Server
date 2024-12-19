@@ -1,3 +1,4 @@
+import Blog from '../blog/blog.model';
 import { IUser } from './user.interface';
 import User from './user.model';
 
@@ -14,8 +15,13 @@ const updateUser = async (userId: string, data: IUser) => {
   });
   return result;
 };
+const deleteBlogToDB = async (id: string) => {
+  const result = await Blog.findByIdAndDelete(id);
+  return result;
+};
 
 export const userService = {
   createUser,
   updateUser,
+  deleteBlogToDB,
 };
