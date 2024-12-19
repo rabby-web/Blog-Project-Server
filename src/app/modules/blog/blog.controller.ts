@@ -8,7 +8,7 @@ const createBlog = catchAsync(async (req: Request, res: Response) => {
   const payload = req.body;
   const result = await blogService.createBlog(payload);
   sendResponse(res, {
-    statusCode: StatusCodes.CONFLICT,
+    statusCode: StatusCodes.CREATED,
     message: 'Blog created successfully',
     data: result,
   });
