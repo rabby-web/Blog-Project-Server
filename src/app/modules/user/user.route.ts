@@ -6,8 +6,12 @@ import { UserValidation } from './user.validation';
 const userRoutes = Router();
 
 userRoutes.post(
-  '/',
+  '/user/',
   validateRequest(UserValidation.userValidationSchema),
   userController.createUser,
 );
+
+// PATCH /api/admin/users/:userId/block
+userRoutes.patch('/admin/users/:userId', userController.updateUser);
+
 export default userRoutes;

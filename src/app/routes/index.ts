@@ -4,11 +4,11 @@ import blogRouters from '../modules/blog/blog.route';
 const router = Router();
 const moduleRoutes = [
   {
-    path: '/user',
+    path: '/api',
     route: userRoutes,
   },
   {
-    path: '/blogs',
+    path: '/api/blogs',
     route: blogRouters,
   },
 ];

@@ -20,6 +20,19 @@ const createUser = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const updateUser = catchAsync(async (req, res) => {
+  const userId = req.params.userId;
+  const body = req.body;
+  const result = await userService.updateUser(userId, body);
+
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    message: 'User Blog successfully',
+    data: result,
+  });
+});
+
 export const userController = {
   createUser,
+  updateUser,
 };
