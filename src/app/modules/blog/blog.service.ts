@@ -19,15 +19,16 @@ const deleteBlog = async (id: string) => {
   return result;
 };
 
-const getBlogs = async (query: Record<string, unknown>) => {
+const getAllBlogs = async (query: Record<string, unknown>) => {
   // const searchableFields = ['name', 'startLocation', 'locations'];
-  const searchableFields = ['title', 'content', 'locations'];
+  // const searchableFields = ['title', 'content', 'author'];
+  const searchableFields = ['title', 'content'];
   const tours = new QueryBuilder(Blog.find(), query)
     .search(searchableFields)
     .filter()
     .sort()
-    .paginate()
-    // .select();
+    .paginate();
+  // .select();
 
   const result = await tours.modelQuery;
   return result;
@@ -37,5 +38,5 @@ export const blogService = {
   createBlog,
   updateBlog,
   deleteBlog,
-  getBlogs,
+  getAllBlogs,
 };
