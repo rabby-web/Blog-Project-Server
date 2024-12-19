@@ -11,6 +11,7 @@ blogRouters.post(
   blogController.createBlog,
 );
 
-blogRouters.put('/:id', blogController.updateBlog)
+blogRouters.put('/:id', blogController.updateBlog);
+blogRouters.delete('/:id', blogController.deleteBlog);
 
 export default blogRouters;

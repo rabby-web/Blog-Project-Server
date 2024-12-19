@@ -13,7 +13,13 @@ const updateBlog = async (id: string, data: IBlog) => {
   return result;
 };
 
+const deleteBlog = async (id: string) => {
+  const result = await Blog.findByIdAndDelete(id);
+  return result;
+};
+
 export const blogService = {
   createBlog,
   updateBlog,
+  deleteBlog,
 };
