@@ -1,11 +1,27 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Response } from "express"
-import { StatusCodes } from "http-status-codes"
+import { TErrorSources, TGenericErrorResponse } from '../interface/error';
 
-export const handlerDuplicateError = (err: any, res: Response) => {
-    res.status(StatusCodes.CONFLICT).json({
-        status: false,
-        message: err.message,
-        error: err
-    })
-} 
+const handleDuplicateError = (err: any): TGenericErrorResponse => {
+  // Extract value within double quotes using regex
+  const match = err.message.match(/"([^"]*)"/);
+
+  // The extracted value will be in the first capturing group
+  const extractedMessage = match && match[1];
+
+  const error: TErrorSources = [
+    {
+      path: '',
+      message: `${extractedMessage} is already exists`,
+    },
+  ];
+
+  const statusCode = 400;
+
+  return {
+    statusCode,
+    message: 'Invalid ID',
+    error,
+  };
+};
+
+export default handleDuplicateError;
