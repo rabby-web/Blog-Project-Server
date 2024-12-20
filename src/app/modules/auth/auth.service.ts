@@ -1,3 +1,4 @@
+import config from '../../config';
 import { IUser } from '../user/user.interface';
 import User from '../user/user.model';
 import bcrypt from 'bcrypt';
@@ -31,7 +32,7 @@ const login = async (payload: { email: string; password: string }) => {
   );
 
   if (!isPasswordMatched) {
-    throw new Error('Wrong Password!!! Tell me who are you? 😈');
+    throw new Error('Invalid credentials');
   }
 
   //create token and sent to the  client
@@ -40,7 +41,9 @@ const login = async (payload: { email: string; password: string }) => {
     role: user?.role,
   };
 
-  const token = jwt.sign(jwtPayload, 'secret', { expiresIn: '1d' });
+  const token = jwt.sign(jwtPayload, config.jwt_access_secret as string, {
+    expiresIn: '30d',
+  });
 
   return { token, user };
 };

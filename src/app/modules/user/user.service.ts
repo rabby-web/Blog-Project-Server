@@ -10,6 +10,15 @@ const createUser = async (payload: IUser): Promise<IUser> => {
 };
 
 const updateUser = async (userId: string, data: IUser) => {
+  const user = await User.findOne({ _id: userId });
+  if (!user) {
+    throw new Error('This user is not exist');
+  }
+
+  if (user.role === 'admin') {
+    throw new Error('Only user role can blocked');
+  }
+
   const result = await User.findByIdAndUpdate(userId, data, {
     new: true,
   });
@@ -17,6 +26,7 @@ const updateUser = async (userId: string, data: IUser) => {
 };
 const deleteBlogToDB = async (id: string) => {
   const result = await Blog.findByIdAndDelete(id);
+
   return result;
 };
 

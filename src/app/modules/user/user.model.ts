@@ -35,12 +35,10 @@ const userSchema = new Schema<IUser>(
         message: '{VALUE} is not valid, please provide a valid role',
       },
       default: 'user',
-      required: true,
     },
     isBlocked: {
       type: Boolean,
-      required: true,
-      default: true,
+      default: false,
     },
   },
   {
