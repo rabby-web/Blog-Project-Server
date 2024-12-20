@@ -12,7 +12,7 @@ import AppError from '../helpers/AppError';
 
 const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
   // setting default values
-  let statusCode = err.statusCode || 500;
+  let statusCode = err.statusCode || 400;
   let message = err.message || 'Something went wrong!';
 
   let error: TErrorSources = [

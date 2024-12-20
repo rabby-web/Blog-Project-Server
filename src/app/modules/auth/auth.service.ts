@@ -1,4 +1,6 @@
+import { StatusCodes } from 'http-status-codes';
 import config from '../../config';
+import AppError from '../../helpers/AppError';
 import { IUser } from '../user/user.interface';
 import User from '../user/user.model';
 import bcrypt from 'bcrypt';
@@ -16,13 +18,13 @@ const login = async (payload: { email: string; password: string }) => {
   );
 
   if (!user) {
-    throw new Error('This user is not found !');
+    throw new AppError(StatusCodes.UNAUTHORIZED, 'Invalid credentials');
   }
 
   const isBlocked = user.isBlocked; // Assuming isBlocked is boolean
 
   if (isBlocked) {
-    throw new Error('This user is blocked!');
+    throw new AppError(StatusCodes.UNAUTHORIZED, 'Invalid credentials');
   }
 
   //checking if the password is correct
@@ -32,7 +34,7 @@ const login = async (payload: { email: string; password: string }) => {
   );
 
   if (!isPasswordMatched) {
-    throw new Error('Invalid credentials');
+    throw new AppError(StatusCodes.UNAUTHORIZED, 'Invalid credentials');
   }
 
   //create token and sent to the  client
