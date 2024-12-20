@@ -14,6 +14,7 @@ const createUser = catchAsync(async (req: Request, res: Response) => {
   const result = await userService.createUser(payload);
 
   sendResponse(res, {
+    success: true,
     statusCode: StatusCodes.CREATED,
     message: 'User created successfully',
     data: result,
@@ -26,6 +27,7 @@ const updateUser = catchAsync(async (req, res) => {
   const result = await userService.updateUser(userId, body);
 
   sendResponse(res, {
+    success: true,
     statusCode: StatusCodes.OK,
     message: 'User Blog successfully',
     data: result,
@@ -37,6 +39,7 @@ const deleteBlogToDB = catchAsync(async (req, res) => {
   await userService.deleteBlogToDB(blogId);
 
   sendResponse(res, {
+    success: true,
     statusCode: StatusCodes.OK,
     message: 'Blog deleted successfully',
     data: {},
