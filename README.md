@@ -60,7 +60,7 @@ Ensure you have the following installed:
    ```
 4. Create an `.env` file in the root directory and configure the environment variables:
    ```env
-   PORT=3000
+   PORT=5000
    MONGO_URI=mongodb://localhost:27017/blog-platform
    JWT_SECRET=your_jwt_secret_key
    ```
