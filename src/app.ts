@@ -10,7 +10,6 @@ const app: Application = express();
 app.use(express.json());
 app.use(cors());
 
-
 app.use('/', router);
 
 app.get('/', (req: Request, res: Response) => {
@@ -20,6 +19,9 @@ app.get('/', (req: Request, res: Response) => {
 app.use(globalErrorHandler);
 
 // Not Found
+
+app.use(notFound);
+
 app.use(notFound);
 // app.use('*', (req: Request, res: Response) => {
 //   res.status(404).json({
