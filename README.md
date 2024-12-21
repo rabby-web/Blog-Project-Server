@@ -60,7 +60,7 @@ This project provides the backend for a blogging platform where users can write,
    ```env
    PORT=5000
    MONGO_URI=mongodb://localhost:27017/blog-platform
-   JWT_SECRET=your_jwt_secret_key
+   JWT_SECRET=jwt_access_secret
    ```
 4. Start the development server:
    ```bash
