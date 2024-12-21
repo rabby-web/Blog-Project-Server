@@ -24,13 +24,13 @@ const createUser = catchAsync(async (req: Request, res: Response) => {
 const updateUser = catchAsync(async (req, res) => {
   const userId = req.params.userId;
   const body = req.body;
-  const result = await userService.updateUser(userId, body);
+  await userService.updateUser(userId, body);
 
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
     message: 'User Blog successfully',
-    data: result,
+    // data: result,
   });
 });
 
@@ -42,7 +42,7 @@ const deleteBlogToDB = catchAsync(async (req, res) => {
     success: true,
     statusCode: StatusCodes.OK,
     message: 'Blog deleted successfully',
-    data: {},
+    // data: '',
   });
 });
 
