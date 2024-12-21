@@ -1,3 +1,4 @@
+
 import { StatusCodes } from 'http-status-codes';
 import QueryBuilder from '../../builder/QueryBuilder';
 import AppError from '../../helpers/AppError';
@@ -36,7 +37,7 @@ const updateBlog = async (id: string, data: IBlog) => {
   return result;
 };
 
-const deleteBlog = async (id: string) => {
+const deleteBlog = async (id: string,) => {
   const blog = await Blog.findOne({ _id: id });
   if (!blog) {
     throw new AppError(StatusCodes.BAD_REQUEST, 'This blog is not exists');

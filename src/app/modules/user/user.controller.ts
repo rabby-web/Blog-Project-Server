@@ -29,7 +29,7 @@ const updateUser = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'User Blog successfully',
+    message: 'User Block successfully',
     // data: result,
   });
 });

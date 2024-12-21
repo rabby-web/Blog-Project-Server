@@ -7,6 +7,12 @@ import jwt from 'jsonwebtoken';
 import config from '../../config';
 
 const register = async (payload: IUser) => {
+  const user = await User.isUserExists(payload.email);
+  if (user) {
+    throw new AppError(400, 'User Already exists !');
+  }
+  // console.log('r-user', user);
+  // console.log(payload);
   const result = await User.create(payload);
   return result;
 };
