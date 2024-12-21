@@ -47,6 +47,7 @@ This project provides the backend for a blogging platform where users can write,
 ### Steps
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/rabby-web/Blog-Project-Server.git
    ```
@@ -55,17 +56,18 @@ This project provides the backend for a blogging platform where users can write,
    ```bash
    npm install
    ```
-4. Create an `.env` file in the root directory and configure the environment variables:
+3. Create an `.env` file in the root directory and configure the environment variables:
    ```env
    PORT=5000
    MONGO_URI=mongodb://localhost:27017/blog-platform
    JWT_SECRET=your_jwt_secret_key
    ```
-5. Start the development server:
+4. Start the development server:
    ```bash
    npm run start:dev
    ```
-6. Access the API at `http://localhost:5000`.
+5. Access the API at Vercel `https://blog-project-sigma-seven.vercel.app/`.
+6. Access the API at Localhost `http://localhost:5000/`.
 
 ---
 
@@ -103,25 +105,3 @@ A consistent error response format is used across all API endpoints:
   "stack": "Stack trace"
 }
 ```
-
----
-
-## Scripts
-
-- **Start Development Server**:
-  ```bash
-  npm run start:dev
-  ```
-
----
-
-## Contributing
-1. Fork the repository.
-2. Create a new branch for your feature.
-3. Commit and push your changes.
-4. Open a pull request.
-
----
-## License
-
-This project is licensed under the MIT License.
