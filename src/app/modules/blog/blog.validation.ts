@@ -8,11 +8,9 @@ const blogValidationSchema = z.object({
     content: z.string({
       required_error: 'Blog title is Required',
     }),
-    author: z.string(),
+    author: z.string().optional(),
     // isPublished: z.boolean()
-    
   }),
-  
 });
 
 export const BlogValidation = {

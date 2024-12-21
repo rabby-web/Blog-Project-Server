@@ -15,7 +15,7 @@ const blogSchema = new Schema<IBlog>(
     },
     author: {
       type: Schema.Types.ObjectId,
-      required: true,
+      // required: true,
       ref: 'User',
     },
     isPublished: {
@@ -28,6 +28,9 @@ const blogSchema = new Schema<IBlog>(
     timestamps: true,
   },
 );
+
+
+
 
 const Blog = model<IBlog>('Blog', blogSchema);
 export default Blog;

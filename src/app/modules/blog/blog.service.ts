@@ -3,9 +3,25 @@ import QueryBuilder from '../../builder/QueryBuilder';
 import AppError from '../../helpers/AppError';
 import { IBlog } from './blog.interface';
 import Blog from './blog.model';
+import User from '../user/user.model';
 
-const createBlog = async (payload: IBlog) => {
-  const result = await Blog.create(payload);
+// const createBlog = async (payload: IBlog) => {
+//   const result = await Blog.create(payload);
+//   return result;
+// };
+
+const createBlog = async (payload: IBlog, userEmail: string) => {
+  const user = await User.isUserExists(userEmail);
+
+  if (!user) {
+    throw new AppError(404, 'User not found!');
+  }
+
+  const userId = user?._id;
+
+  const blogData = { ...payload, author: userId };
+
+  const result = await Blog.create(blogData);
   return result;
 };
 
