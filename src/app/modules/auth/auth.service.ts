@@ -1,5 +1,4 @@
 import { StatusCodes } from 'http-status-codes';
-import config from '../../config';
 import AppError from '../../helpers/AppError';
 import { IUser } from '../user/user.interface';
 import User from '../user/user.model';
@@ -43,9 +42,14 @@ const login = async (payload: { email: string; password: string }) => {
     role: user?.role,
   };
 
-  const token = jwt.sign(jwtPayload, config.jwt_access_secret as string, {
+  // const token = jwt.sign(jwtPayload, config.jwt_access_secret as string, {
+  //   expiresIn: '30d',
+  // });
+  const token = jwt.sign(jwtPayload, 'secret', {
     expiresIn: '30d',
   });
+
+  // jwt.verify(token, config.jwt_access_secret as string); // Ensure this matches
 
   return { token, user };
 };

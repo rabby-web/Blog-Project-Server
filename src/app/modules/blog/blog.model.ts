@@ -6,6 +6,8 @@ const blogSchema = new Schema<IBlog>(
     title: {
       type: String,
       required: [true, 'Please provide title'],
+      // minlength: 3,
+      // maxlength: 50,
     },
     content: {
       type: String,
@@ -18,6 +20,7 @@ const blogSchema = new Schema<IBlog>(
     },
     isPublished: {
       type: Boolean,
+      // required: true,
       default: true,
     },
   },

@@ -9,7 +9,10 @@ const blogValidationSchema = z.object({
       required_error: 'Blog title is Required',
     }),
     author: z.string(),
+    // isPublished: z.boolean()
+    
   }),
+  
 });
 
 export const BlogValidation = {
