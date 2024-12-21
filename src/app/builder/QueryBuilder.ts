@@ -24,14 +24,19 @@ class QueryBuilder<T> {
 
     return this;
   }
-
   filter() {
-    const queryObj = { ...this.query }; // copy
+    const queryObj = { ...this.query };
 
-    // Filtering
-    const excludeFields = ['search', 'sortBy'];
+    // console.log(queryObj)
 
-    excludeFields.forEach((el) => delete queryObj[el]);
+    const excludeFields = ['search', 'sortOrder', 'sortBy'];
+
+    excludeFields?.forEach((el) => delete queryObj[el]);
+
+    if (queryObj?.filter) {
+      this.modelQuery = this.modelQuery.find({ author: queryObj.filter });
+      delete queryObj.filter;
+    }
 
     this.modelQuery = this.modelQuery.find(queryObj as FilterQuery<T>);
 
@@ -47,7 +52,6 @@ class QueryBuilder<T> {
 
     return this;
   }
-
 }
 
 export default QueryBuilder;

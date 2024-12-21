@@ -52,7 +52,6 @@ const getAllBlogs = async (query: Record<string, unknown>) => {
     .search(searchableFields)
     .filter()
     .sortBy();
-
   const result = await tours.modelQuery;
   return result;
 };
