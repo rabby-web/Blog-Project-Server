@@ -1,17 +1,9 @@
 import { Router } from 'express';
 import { userController } from './user.controller';
-import validateRequest from '../../middleware/validateRequest';
-import { UserValidation } from './user.validation';
 import auth from '../../middleware/auth';
 import { USER_ROLE } from './user.constants';
 
 const userRoutes = Router();
-
-userRoutes.post(
-  '/user/',
-  validateRequest(UserValidation.userValidationSchema),
-  userController.createUser,
-);
 
 // PATCH /api/admin/users/:userId/block
 userRoutes.patch(

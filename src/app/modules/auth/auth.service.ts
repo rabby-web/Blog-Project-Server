@@ -4,6 +4,7 @@ import { IUser } from '../user/user.interface';
 import User from '../user/user.model';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import config from '../../config';
 
 const register = async (payload: IUser) => {
   const result = await User.create(payload);
@@ -45,7 +46,7 @@ const login = async (payload: { email: string; password: string }) => {
   // const token = jwt.sign(jwtPayload, config.jwt_access_secret as string, {
   //   expiresIn: '30d',
   // });
-  const token = jwt.sign(jwtPayload, 'secret', {
+  const token = jwt.sign(jwtPayload, config.jwt_access_secret as string, {
     expiresIn: '30d',
   });
 
