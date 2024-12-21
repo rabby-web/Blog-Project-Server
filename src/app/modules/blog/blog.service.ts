@@ -1,4 +1,6 @@
+import { StatusCodes } from 'http-status-codes';
 import QueryBuilder from '../../builder/QueryBuilder';
+import AppError from '../../helpers/AppError';
 import { IBlog } from './blog.interface';
 import Blog from './blog.model';
 
@@ -8,6 +10,10 @@ const createBlog = async (payload: IBlog) => {
 };
 
 const updateBlog = async (id: string, data: IBlog) => {
+  const blog = await Blog.findOne({ _id: id });
+  if (!blog) {
+    throw new AppError(StatusCodes.BAD_REQUEST, 'This blog is not exists');
+  }
   const result = await Blog.findByIdAndUpdate(id, data, {
     new: true,
   });
@@ -15,6 +21,10 @@ const updateBlog = async (id: string, data: IBlog) => {
 };
 
 const deleteBlog = async (id: string) => {
+  const blog = await Blog.findOne({ _id: id });
+  if (!blog) {
+    throw new AppError(StatusCodes.BAD_REQUEST, 'This blog is not exists');
+  }
   const result = await Blog.findByIdAndDelete(id);
   return result;
 };
